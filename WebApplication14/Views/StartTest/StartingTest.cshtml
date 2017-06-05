@@ -1,0 +1,55 @@
+﻿@model WebApplication14.Domain.Concrete.ViewCurrentDisciples
+@{
+    ViewBag.Title = "Test";
+}
+<html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/ajax")
+<body>
+    <div id="Results_Section">@{Html.RenderAction("FirstSpisok", "Test");}</div>
+    <div class="col-md-6 .col-md-offset-3">
+        <button class="btn btn-primary" onclick="PostData()">Отправить</button>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if($('div[class = "col-md-4"]').is(":hidden"))
+            {
+                $('div[class = "col-md-4"]').slideDown(2000);
+            }
+        });
+        function PostData() {
+            var params = new Array();
+            var napr = new Array();
+            var testdata = {
+                'Params': params,
+                'Napr': napr
+            }
+            $('input[class = "checking"]:checked').each(function () {
+                params.push($(this).val());
+                napr.push($(this).attr('id'));
+            })
+            $.ajax({
+                type: "POST",
+                url: '/Test/FirstSpisok',
+                data: JSON.stringify(testdata),
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: successFunc,
+                async: true
+            }
+                );
+            function successFunc(data) {
+                $('div[class = "col-md-4"]').slideUp(500);
+                $('div[class = "col-md-4"]').empty();
+                $("#Results_Section").append(data);
+                if ($('div[class = "col-md-4"]').is(":hidden")) {
+                    $('div[class = "col-md-4"]').slideDown(2000);
+                }            
+        }
+        }
+        function errorFunc(errorData) {
+            alert('Ошибка' + errorData.responseText);
+        }
+    </script>
+</body>
+</html>
