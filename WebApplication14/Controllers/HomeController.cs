@@ -12,6 +12,7 @@ namespace WebApplication14.Controllers
 
         public ActionResult Index()
         {
+           
             MoDel md = new MoDel();
             var photo = md.PhotoDirectory.Select(p => p.photo);
             List<string> name = new List<string>();

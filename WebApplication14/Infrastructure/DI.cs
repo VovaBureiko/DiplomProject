@@ -23,6 +23,7 @@ namespace WebApplication14.Infrastructure
             kernel.Bind<IDisciples>().To<DisciplesDirectory>();
             kernel.Bind<IOsn>().To<Osnova>();
             kernel.Bind<ISpecial>().To<Specal>();
+            kernel.Bind<ISpecializations>().To<Napravlenia>();
         }
         protected override IController GetControllerInstance(RequestContext requestContext,
                                                           Type controllerType)

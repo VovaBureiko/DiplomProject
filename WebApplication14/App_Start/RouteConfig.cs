@@ -18,6 +18,16 @@ namespace WebApplication14
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                null,
+                url : "{controller}/{action}",
+                defaults : new {controler = "Test", action = "FirstSpisok"}
+                );
+            routes.MapRoute(
+                name : "ToEnd",
+                url: "{controller}/{action}",
+                defaults : new {controller = "EndTest", action = "EndTest"}
+                );
+            routes.MapRoute(
                 name: "Start",
                 url: "{controller}/{action}/{number}",
                 defaults: new { controller = "Test", action = "Index", number = UrlParameter.Optional });

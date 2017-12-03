@@ -1,0 +1,91 @@
+﻿@model WebApplication14.Domain.Concrete.ViewEndTest
+@{
+    ViewBag.Title = "EndTest";
+    Layout = "~/Views/Shared/View.cshtml";
+}
+@{
+   
+}
+          <table class="table table-inverse">
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>Направление</th>
+                        <th>Совместимость</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@foreach (var a in Model.SummaryList)
+                    {
+                        if (a.NameOfSpec == "Телекомунікації")
+                        {*@
+                            @*<tr>
+                                <th scope="row">@i</th>
+                                <td data-toggle="modal">@a.NameOfSpec</td>
+                                <td>60</td>
+                            </tr>*@
+                          
+                        @*}
+                        else*@
+                        @*{
+                            <tr>
+                                <th scope="row">@i</th>
+                                <td onclick="ShowInformation()">@a.NameOfSpec</td>
+                                <td>@(Math.Round((a.Sum / 35) * 100))%</td>
+                            </tr>
+                            @(i++)*@
+                    <tr>
+                        <th scope="row" data-toggle="modal" data-target="#myModal">1</th>
+                        <td onclick="Show()">Телекомунікації</td>
+                        <td>64%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td data-toggle="modal">Кібербезпека</td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td data-toggle="modal">Компьютерна інженерія</td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">4</th>
+                        <td data-toggle="modal">Радіоелектроніка</td>
+                        <td>34%</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">5</th>
+                        <td data-toggle="modal">Радіотехніка</td>
+                        <td>51%</td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br/>
+              @*<button class="btn btn-info btn-lg" type="button" data-toggle="modal" data-target="#myModal">Показать всплывающее окно</button>*@
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal">×</button>
+                <h4 class="modal-title">Інформація про спеціальність</h4>
+            </div>
+            <div class="modal-body">Направлення навчання Телекомунікації. Має результат 64 %, бо було обрано такі диципліни : Телекомунікаційні та інформаційні мережі, Телекомунікаційні і інформаційні технології, Цифрова обробка сигналів, Мобільні та супутникові системи звязку, Телекомунікаційні системи передач, Присторої Надвисоких частот, Web - програмування, Електронні прилади.  </div>
+            <div class="modal-body">Навчання проходит на 5 Факультеті РТСЛА Після завершення навчання ви можете навчатися на таких спеціалізаціях : Інформаційні мережі зв'язку, Технології та засоби телекомунікацій</div>
+            <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Закрыть</button></div>
+        </div>
+    </div>
+</div>
+<script>
+    function Show()
+    {
+        $('.modal-dialog').show();
+    }
+   
+</script>

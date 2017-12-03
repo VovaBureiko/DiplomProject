@@ -24,8 +24,10 @@ namespace WebApplication14
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/Carousel.css",
+                      "~/Content/bootstrap.min.css",
+                      "~/Content/site.css"
+                      ));
             bundles.Add(new ScriptBundle("~/bundles/ajax").Include(
 
                 "~/Scripts/jquery.unobtrusive-ajax.js"));

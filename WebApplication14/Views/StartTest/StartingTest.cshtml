@@ -6,27 +6,43 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/ajax")
 <body>
-    <div id="Results_Section">@{Html.RenderAction("FirstSpisok", "Test");}</div>
+    <div id="Results_Section"></div>
     <div class="col-md-6 .col-md-offset-3">
-        <button class="btn btn-primary" onclick="PostData()">Отправить</button>
+        <button class="btn btn-primary" onclick="PostData()">Відіслати</button>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            if($('div[class = "col-md-4"]').is(":hidden"))
-            {
-                $('div[class = "col-md-4"]').slideDown(2000);
-            }
+            $.ajax({
+                type: "GET",
+                url: '/Test/FirstSpisok',
+                async: true,
+                dataType: "html",
+                success: function (data) {
+                    $('#Results_Section').append(data);
+                }
+            });
+
+            
+                $('#Spisok').show();
+            
         });
         function PostData() {
             var params = new Array();
             var napr = new Array();
             var testdata = {
                 'Params': params,
-                'Napr': napr
+                'Check': napr
             }
-            $('input[class = "checking"]:checked').each(function () {
+            $('input[class = "checking"]').each(function () {
                 params.push($(this).val());
-                napr.push($(this).attr('id'));
+                if ($(this).is(":checked"))
+                {
+                    napr.push(true);
+                }
+                else
+                {
+                    napr.push(false);
+                }
             })
             $.ajax({
                 type: "POST",
@@ -38,17 +54,31 @@
                 async: true
             }
                 );
+            $.ajax({
+                type: "POST",
+                url: '/Default/Index',
+                data: "json",
+                success: IsActive
+            });
+            function IsActive(data)
+            {
+                if(data == true)
+                {
+                    $('#ButtonSection').show();
+                }
+            }
             function successFunc(data) {
                 $('div[class = "col-md-4"]').slideUp(500);
                 $('div[class = "col-md-4"]').empty();
                 $("#Results_Section").append(data);
                 if ($('div[class = "col-md-4"]').is(":hidden")) {
                     $('div[class = "col-md-4"]').slideDown(2000);
-                }            
+                }
+                
         }
         }
         function errorFunc(errorData) {
-            alert('Ошибка' + errorData.responseText);
+            console.log(errorData);
         }
     </script>
 </body>

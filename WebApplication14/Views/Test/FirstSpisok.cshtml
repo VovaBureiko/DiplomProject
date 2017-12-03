@@ -1,19 +1,9 @@
 ﻿@model WebApplication14.Domain.Concrete.ViewCurrentDisciples
-    @foreach (var p in Model.sp.Lines)
+   
+    @foreach (var p in Model.sp)
     {
-        try
-        {
-            for (int i = 0; i < p.dic.Count; i++)
-            {
-                     
-            <div class="col-md-4" hidden>
-                <label>@p.dic.Peek().Name<input type="checkbox" value="@p.dic.Peek().ves" id="@p.Name" class="checking"/></label>
+            <div  id ="Spisok" class="col-md-4">
+                <label>@p<input type="checkbox"class="checking" value="@p"/></label>
             </div>
-            }
-        }
-        catch
-        {
-           
-        }
     }
 

@@ -1,0 +1,13 @@
+﻿@import url("bootstrap.min.css");
+html,
+body {
+  height: 100%;
+}
+.carousel,
+.carousel slide,
+.carousel-inner,
+.carousel-inner .item,
+.carousel-inner img {
+  height: 100% !important;
+  width: 100% !important;
+}

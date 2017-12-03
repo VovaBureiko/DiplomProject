@@ -5,8 +5,11 @@ using System.Web;
 
 namespace WebApplication14.Domain.Concrete
 {
-    public class ViewCurrentDisciples
+    public class ViewEndTest
     {
-       public List<string> sp { get; set; }
+        public IEnumerable<SummaryClass> SummaryList { get; set; }
+
+
+
     }
 }

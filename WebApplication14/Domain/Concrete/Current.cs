@@ -5,9 +5,14 @@ using System.Web;
 
 namespace WebApplication14.Domain.Concrete
 {
-    public class Result
+    public class Current
     {
         public string Name { get; set; }
-        public bool check { get; set; }
+        public List<string> SPec = new List<string>();
+
+        public void Add(string str)
+        {
+            SPec.Add(str);
+        }
     }
 }
